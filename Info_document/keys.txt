@@ -83,6 +83,9 @@ tar fie creating/untaring:
 			tar -cvf tar_file  ---> it will untar it.
 			
 
+(shift + alt is to select multiple lines in notepad++ application)
+			
+
 
 Interface-management (networking engineer, vlan,ipv4,ipv6,static and dynamic, dhcp)
 sys/class/net/eth0/address/  ---> contains mac-address
