@@ -83,7 +83,7 @@ tar fie creating/untaring:
 			tar -cvf tar_file  ---> it will untar it.
 			
 
-(shift + alt is to select multiple lines in notepad++ application)
+shift + alt is to select multiple lines in notepad++ application
 			
 
 
