@@ -1,0 +1,90 @@
++++++++++++++++++++++++++++++++++++++++++
+
+GIT COMMANDS
+git format-patch -1 HEAD   ---> for patch creation
+git apply --whitespace=fix mychanges.patch
+git apply --reject --whitespace=fix path-to-patch   ---> to apply the patch 
+git clone -b my-branch <git@github.com:user/myproject.git>   ----> clone the specific branch in the git-repo
+git add <file-name>    ----> or ---> git add . to add the untracked changes
+git commit -m "Test"   ----> to commit the changes
+git push origin <branch-name>  ---> to push the changes to specified branch  (this will not work for protected branch)
+git stash --all    -----> to stash the changes (move the untacked & added changes to local)
+         (shift + alt is to select multiple lines in notepad++ application)
+    git stash 
+    git stash list
+    git stash apply stash@{0}  (or) git stash pop stash@{0}      (pop will remove the stored stash and apply it to working dir)
+git stash show -p stash@{stash-id}
+git clean -n ---> askes permission to remove the untracked files and also will list all untracked files.
+git clean -f ---> removed the listed untracked files...
+git difftool --tool=vimdiff app_interface/capi/capi.c
+
+
+
+1.git branch
+2.git branch <latest_sfs(branch name)>
+3.git branch
+4.git checkout <latest_sfs(branch name)>
+5.git branch
+6.git add
+7.git commit
+8.git push <latest_sfs(branch)>
+9.added the reviewer here
+git push origin latest_sfs
+
+++++++++++++++++++++++++++++++++++++++++++
+
+
+1. after resolving the merge conflicts,
+   git add <file_name>
+   //git commit --amend (not reqiured)
+   git rebase --continue      (git rebase --abort)
+   git rebase --skip
+   git log
+   
+   
+   
+   git branch
+   git checkout release/mr2-full   ---> (release/mr2-full is the branch i need to pull the changes)
+   git pull
+   git log     ----> to check the latest commit
+   git branch
+   git checkout enhance/pm_tranceiver    ----> (go back to the working branch)
+   git rebase release/mr2-full
+      if (merge_conflict)
+	  {
+	         1. resolve the merge conflicts by manually changing those files.
+			 2. git add <file_name>
+			 3. git commit --amend (not reqiured)
+			 4. git rebase --continue
+			 5. git rebase --skip
+			 6. git log
+	  }
+   git log              ----> check that, your changes are on top of latest commit
+   
+ 
+
+==================================== Important to check & understand ============================
+ ************ function pointer array *************
+ 
+static unsigned int no_carriers = 2;
+static void carr_to_inactive(carrier_details_t *carr_st_info);
+static void carr_to_active(carrier_details_t *carr_st_info);
+static void carr_to_sleep(carrier_details_t *carr_st_info);
+static void not_appllicable_state(carrier_details_t *carr_st_info);
+
+static void (*(next_carrier_fsm[2][3]))(carrier_details_t *info_carr) =
+{
+   //DISABLED state
+   {
+      carr_to_inactive,
+      not_applicable_state,
+      not_applicable_state
+   },
+   //READY state
+   {
+      not_applicable_state,
+      carr_to_active,
+      carr_to_sleep
+   }
+};
+==================================================================================================== 

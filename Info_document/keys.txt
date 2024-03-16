@@ -1,0 +1,162 @@
+################## short keys in computer #################
+
+FN+R = Break
+FN+S = Sys Rq
+FN+C = Scroll Lock
+FN+E = Insert
+FN+W = Pause
+
+############################################################
+
+################## linux Comands ############################
+
+df -i      :- for checking the space in the repo
+G = END OF FILE (esc)
+(line_no)G = jump to that number (ex 150G)
+ctrl + gg = Shows the file name.
+esc + gg = go to the top of the file
+ctrl + h = to clear history ---> clear browsing data.
+Esc + G + A : Go to bottom of the file and in append text mode. In other words, jump to last line and start writing code/text.
+Hit Esc + A + $ : Go to bottom of the file and end of line.
+shift + u ----> will convert the capital to small
+just typing 'w' is for jump word by word
+just typing 'b' is for jump back word
+"*yy   for copy in vim [SELECT THE CAPLOCK ON]
+"*p    for paste in vim, it will work b/w files..
+:77,114 s/self.log(sel.LOG_INFO, /replace/g
+tab == forward
+shift + tab = backword
+:set tabstop=4
+:set et|retab
+:e $MYVIMRC
+killall -KILL import
+grep -rni "enable_log(1)" *
+sudo zgrep xcvrd /var/log/syslog -------- "to check for the pirticular failure."
+find ./ -type f -exec sed -i -e 's/apple/orange/g' {} \; ----> replace "apple" with "orange" in all the occurence of files under a directory.
+scp admin@10.67.83.46:/usr/local/lib/python3.7/dist-packages/sonic_y_cable/y_cable_broadcom.py .
+{   
+	(add/deleat the same word in same place in all lines)
+		select visual mode
+		click - shift + i ---> to get the edit mode
+		enter "word"
+		clikc 'Esc' ---> to replace the word in selected place
+}
+{
+    (allignment)
+        go to the cosed curey brases ({)
+		1. visual mode
+		2. shift + 5 (is %)
+		3. =
+};
+{
+	(CSCOPE:::)
+		cscope -R
+		ctrl+T get it back to the search prompt  (Tab) and (space_bar to next pages)
+		ctrl+D exit from the cscope
+		netstat ---> shows the people using the server (system)
+}
+{
+	(Ctags)
+		ctags -R 
+		ctrl + ] = go to the definition
+		ctrl + t = jump back from the definition
+		:set tags=projects/hsip_fw/users/contractor_rampup/mahindra/hsip_fw_Millenio/tags;
+}
+ctrl + V  = visual block
+shift + V = visual mode
+FOR searching forward we can use "/word" and for backword we can use "?word";
+for forward 'n' and backward 'N'
+to search an exact-word ::::: /\<"word"\>    enclose the word in \< and \>
+
+#############################################################
+
+*************** running the command in background **********************
+<command> & disown -----> disown flag is used to run it in the backgrounf even after closing the terminal(or connection loss). 
+
+process commands:
+			ps -aef | grep <process name> it will show porocess-id
+			pwdx <process-id> it will show from which path it is running.
+			kill -9 < process-id
+			
+tar fie creating/untaring:
+			tar -xvf file/ file_to_be_tar
+			tar -cvf tar_file  ---> it will untar it.
+			
+
+
+Interface-management (networking engineer, vlan,ipv4,ipv6,static and dynamic, dhcp)
+sys/class/net/eth0/address/  ---> contains mac-address
+
+####### SSH keygen ########
+cp ~/sk039885.pub /projects/hsip_common_3/tryGit/Keys
+vi /etc/ssh/sshd_config    ---> check for permissions   (PermitRootLogin yes)
+###########################
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+To enable/disable the vlan in linux
+
+vconfig rem <vlan-if-name>
+     vconfig rem eth1.6
+vconfig add <if-name> <vlan-id>
+     vconfig add eth1 6
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+valgran is for check the memleak
+gbd to debug
+core-dump file should be loaded 
+
++++++++++++++++++++++++++++++++++++++++++
+
+================================ Setting the interface ip,netmask,gateway =======================
+set IP & Network up:
+ifconfig <interface_name> <IP-Address> up
+ex:- ifconfig elnf0 10.203.229.165 up
+NETMASK:
+ifconfig elnf0 netmask <net_mask>
+ex:- ifconfig elnf0 netmask 255.255.255.224 
+GATEWAY
+route add default gw <gateway>
+ex:- route add default gw  10.203.229.1
+
+=================================================================================================
+
+================================ VLAN secquence =================================================
+Normal flow when no VLAN interface is present:
+
+1.ORU start
+2.No VLANs, mplane-int yang not configured yet, an initially configured interface present.
+3.No VLAN discovery
+4.Perform DHCP access on the same interface by performing ifdown and ifup on the interface.
+5.Get lease file and get DU IP address and port.
+6.Connect to DU
+
+ 
+
+General Flow with VLAN interfaces:
+
+1.ORU start
+2.DU updates mplane-int yang with interface and sub-interface (VLAN) information
+3.Script creates VLAN interfaces from VLAN tags provided. Reboots
+4.New configured VLAN interfaces available
+5.Enumerate through these VLAN interfaces and try to get DHCP IP by performing ifdown and ifup.
+6.If lease file received and IP received ping DU IP Address
+7.If successful ping connect with DU.
+ 
+====================================================================================================
+
+1.cross check the code properly twice and more is also fine.
+2.first listurn properly, and then try to answer the question.
+3.while answering the question wait for a while or 10sec.
+4.explain it in a cool manner.
+
+5.make sure with the lane_masks & phy_id & core_ip & direction & type of the traffic.
+6.every time run the debug using the cmd_prompt
+7.use the flags properly
+
+
+
+
+
+phy diag ce14 dsc   -------------- > checking the port lanes
+sudo config interface autoneg Ethernet36 disabled

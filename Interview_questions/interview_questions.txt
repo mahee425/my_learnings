@@ -1,0 +1,251 @@
+1. Explain i2c protocol?
+    2. In i2c how many addressing modes are available?
+    3. How you will get the client address?
+    4. How you will send multiple bytes using i2c protocol?
+    5. How you will insert the module?
+    6. How you will list the inserted module?
+    7. What is adb?
+    8. Explain some adb commands?
+    9. Write one simple hello world module?
+    10. How you will build the customized kernel?
+    11. Explain Kernel building procedure?
+    12. Projects explanation and questions related to projects..
+    13. How you build the toolchain
+    14. What is device tree in linux? and what is the use of device tree?
+    15. What is spinlocks?
+    16. What are the different type of memory zones in linux memory management?
+    17. What is DMA?
+    18. What is cycle stealing in DMA?
+1) C program to reverse the singly linked list
+   2) Difference between spinlock and mutex. Real time usage experience in the project and using mutex inside spinlock.
+   3) Tools and debuggers used in the projects
+ How the interrupt handled and what is the role of interrupt table?
+    RTOS- Priority inversion
+    Explain Callback function/Function pointer
+    Bit Wise operation (Toggle the bit and set the bit)
+    Macro of sizeof
+    What and use is Static function with example?
+    Memory Layout of a process in detail (Stack and heap grown direction, data segments sections)
+    Memory management (Page allocation)
+    Dynamic memory allocation (malloc, calloc)
+    Android Layers
+    Activity life cycle
+    Why All the activity will go in background while playing Video but not when Audio?
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+1.Explain about containerof() & list_for_each_entry
+2.Read data from file store it into a integer variable    
+    ex :1234
+3.impliment sscanf()
+
+4.char *p="123";
+ int *a = (int *)p;
+ printf("%d",a);
+
+what is o/p ? explain with respect to memory locations.
+5.Reverse a doubly linked list(kernel model double linked list)
+
+6.Api getsockfd(cpu_num) takes cpu number as argument & return sockfd.All cpus whose sockfd is same belongs to cluster of id N.
+    write a functions 1.store info about cpus & cluster_id in an array cluster_id[cpu_num],cluster_cpus[cluster_id_num].
+              2.Takes argument as cluster id/cpu_num and return cpus_bitmask of cluster_id/cluster_id number of cpu.
+
+
+
+2nd round :
+1.compilation process(main.c to a.out)
+2.memory layout of executable
+3.About Heap & Dynamic memory allocation functions(malloc,calloc,realloc,free)
+4.
+    int i;
+    static int i;
+    main() {
+        ...
+    }    
+    1.Any error? if not why?
+    2.about storage class specifiers?
+    3.Initial value of i? ....
+
+C & ds:
+
+1.reverse doubly linked list
+2.Generate bit mask from bit 15 to 19.
+3.swap adjecent nodes of doubly linked list (swap links & swap data)
+4.why volatile,need of it
+5.what happens if u free two times in dynamic memory allocation
+6.different segments of a binary(.o file)
+7.Thread1 printing even numbers(0246..) ,thread2 printing odd numbers(1357...) ,then print numbers in sequence(012345....).
+8.copying 3rd and 2nd bytes from a variable to 2nd and 3rd byte positions in another variable without affecting 1st and 4th bytes.
+9.how to concatenate 3 bits from a variable and 4 bits from another variable
+10.extracting bits in between two bit positions
+11.Bit masking
+12.reversing a circular singly linked list
+13.About strcpy,memcpy
+14.Explanation about Rotating Matrix to 90 degrees.
+
+Arm :
+
+1.Arm block diagram(ARM7TDMI),pipeline
+2.Arm modes & what is need of modes
+3.How you enter into different modes
+4.Any Assembly instructions related to ARM
+5.Is thumb instruction execute in 16 bit format or in 32 bit.
+6.what BX Instruction will do.
+7.How it achive multi tasking ,protection & security in ARM modes
+8.About MMU ,CACHE
+Project :
+
+1.I2C protocol
+2.Data structures related to i2c
+
+
+1) char *ptr = "Linux";
+   printf("\n[%c]\n",*ptr++);
+   printf("\n[%c]\n",*ptr);
+
+2) difference between const int *p and int *const p
+3)difference between array of pointers and pointer to array
+4) char *p1 = "name";
+   char *p2;
+   p2 = (char *)malloc(20);
+   memset(p2,0,20);
+   while(*p2++ = *p1++);
+   printf("%sn",p2);
+5) char *p1 = "Cisco Systems";
+   *p1++;
+   printf("%s\n",p1);
+   p1++;
+   printf("%s\n",p1);
+
+6)program to reverse a string without using temp string & with using temp string.
+7) program to reverse singly linked list
+8) declare an array of pointers to chars
+9) find the number of set bits in a char array
+
+10) program to rotate a matrix 90 degrees.
+ex: Eg: Input-
+    1 2 3
+    4 5 6
+    7 8 9
+    Output-
+    7 4 1
+        8 5 2
+    9 6 3
+11)difference between static keyword & extern keyword with example
+12)difference between local static & global static with example
+13)int *fun(int val) {
+    int a = val;
+    return &a;
+    }
+    int main() {
+    int a =10;
+    int *p;
+    p = fun(a);
+    pf("%d\n",p);
+     }
+
+is there any problem with above pgm?if yes explain.
+
+
+14)diffrence between malloc & calloc
+
+1. Explain the display driver architecture
+       2. What are the issues you faced
+       3. Explain the driver file modifications in i2c and explain i2c protocol
+       4. Explain VFS
+       5. Explain the character driver template anf explain the flow from app to hardware
+       6. How the interrupt wil come and how it will be handled in linux
+       7. What is spinlock, where it will be used
+       8. What is interrupt context
+       9. Design one architecture......interrupt came from hardware and ...driver is character driver...how it will be intimated to application?
+
+ 1. Explain the boot sequence procedure
+      2. Explain different modes in ARM?
+      3. Explain registers in ARM?
+      4. What is the difference between fiq and irq?
+      5. How the interrupt will be handled in ARM?
+      6. What are the synchronization techniques in linux?
+      7. Why isr will be divided into two parts and bottom halves implementation methods and their differences?
+      9. Difference between malloc() and calloc()?
+     10. Difference between kmalloc() and vmalloc()?
+     11. Implement your own malloc()?
+     12. What arfe the scheduling algorithms?
+     13. What is the difference between process and thread?
+     14. create one process..create three threads(t1, t2, t3) inside the process..declare one array (with 1 to 10 numbers) globally...print 1        to 5 in t1, print 6 to 8 in t2 and print 9 to 10 in t3.
+     15. What is the difference between global variables and static variables?
+     16. What are the different issues you faced? and how you debugged?
+     17. Explain the vsync?
+     18. Write one structure for doubly linked list and create list with 3 elements?
+1.Tell me about your current project.
+2.Explain i2c protocol
+3.what is bus arbitration in i2c protocol comminucation?
+4.How application will write on to the framebuffer device?
+5.What is the difference between virtual memory and physical memory?
+6.How application will write on to the framabuffer device in android?
+7.How will you calculate the scrren size?
+8.How frequently surfaceflinger will update the rendering frame for display?
+9.What is VSYNC?
+10.What is double buffering?
+11.How framebuffer will take data from surfaceflinger?
+1.What is SurfaceFlinger?
+2.What is composition and rendering?
+3.What is HWcomposer?
+4.Who will decide composition?
+5.What is fence?
+6.What these apis will do in hwcomposer, prepare() and set()?
+7.What is mdp?, Why qualcomm introduced mdp?
+8.What is vsync? how it is reached to application?
+9.What is the difference between process and thread?
+10.what is the output?
+
+int a = 10;
+int b=a++;
+a = ++a;
+a = a++;
+int c = ++a;
+a = ++a;
+printf("%d %d %d\n", c,b,a);
+
+2nd Round:
+
+1.Draw the display architecture in android?
+2.Explain each and every block in display architecture?
+3.What is triple buffering?
+4.What is fence?
+5.What type of information will give activity manager and window manager to surfaceflinger?
+6.what is rendering and composition?
+7.what is the difference between memory mapped io and io mapped io?
+8.Write an instruction to access memory using memory mapped io?
+9.What is volatile?
+10.Write a program create 2d array and print the elements?
+
+
+
+
+
+1. What is mutex?
+2. What is spinlock?
+3. What is thread? How you will create new thread?
+4. What is device driver?
+5. How you will write new device driver?
+6. What is memory leak? How you will findout the memory leak?
+7. Give me the logic for this question
+     int arr[100] = { 1 to 100} ---> but one number is missed in this array
+    how you will findout that number without printing array?
+8. What is linked list?
+9. How you will delete the node in a linked list?
+10. What is kernel panic?
+11. How to resolve kernel panic?
+12. How you will analyse the crash issue?
+
+
