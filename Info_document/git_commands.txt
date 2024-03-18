@@ -60,7 +60,105 @@ git push origin latest_sfs
 	  }
    git log              ----> check that, your changes are on top of latest commit
    
+
+***************** How to find the origin name *****************
+git remote -v    -> will show us the origin name.
+git remote add <name of the origin> <git link (https://github.com/mahee425/my_learnings.git)>
+
+
+************* How to revert back the merged changes **********
+1. git revert <merge commit id> -m 1    -    will remove the one commit.
+2. it will create one more commit-id, just we need to save and exit from that file.
+3. git push -u origin main 
+4. the problem is it will create one more commit-id
+
+************ changes in the branch should not reflected to main branch ***************** switching branch is not possiable when we have uncommitted changes in current branch 
+1. create branch and checkout to it.
+2. made some changes and without adding and commiting the changes try to switch to main branch.
+3. it will show you the error.
+   ex:- error: Your local changes to the following files would be overwritten by checkout:
+				README.md
+		Please commit your changes or stash them before you switch branches.
+		Aborting 
+
+
+*********** combining multiple commits into a single commit **************
+for this we can use the  ( git rebase interactive )
+1. we have some multiple commits which are related to the single implementation.
+2. git rebase -i <last-commit you have did for the implementation> for example 123456 in this 6 is the last commit.
+3. add squash to the commits of 12345 i.e s 1, s 2, s 3, s 4, s 5 pick 6 this means we are squashing all commits and combining with 6.
+4. and give the latest commit name for this.
+5. now check the git log to see the multiple commits will squashed into single commit.
+
+********** How do we squash the commits and combined them as one commit ***************
+1. Do some multiple commits, below are the multiple commits.
+               commit 5bf33593f9c688c80ef3dd15d944a6bbdcfd3ee6 (HEAD -> main, origin/main, origin/HEAD)
+				Merge: 0ed3dcd 089ac87
+				Author: Kasu Mahindra <kasu.mahindra@mphasis.com>
+				Date:   Thu Mar 14 14:20:52 2024 +0530
+				
+					Merge branch 'main' of https://github.com/mahee425/my_learnings
+				
+				commit 0ed3dcd0dd7e4e9cb8d191951394f3982a218e0b
+				Author: Kasu Mahindra <kasu.mahindra@mphasis.com>
+				Date:   Thu Mar 14 14:19:19 2024 +0530
+				
+					new_commit1
+				
+				commit 089ac87dd30eda297f4342e5fb6ead546d21e498
+				Author: Kasu Mahindra <kasu.mahindra@mphasis.com>
+				Date:   Thu Mar 14 14:17:42 2024 +0530
+				
+					new_commit
+				
+				commit f6af2998190e6129ed430a1899fda3c4469dab4f
+				Merge: 38e991f 12c75ec
+				Author: Kasu Mahindra <kasu.mahindra@mphasis.com>
+				Date:   Wed Mar 13 13:32:36 2024 +0530
+				
+					new_file
+				
+				commit 38e991f28fdcd86654a014d3437efedddf862e43
+				Author: Kasu Mahindra <kasu.mahindra@mphasis.com>
+				Date:   Wed Mar 13 13:30:12 2024 +0530
+				
+					new_file
+				
+				commit 12c75ec856e779333334640d9353a0f8b79d88ff
+				Author: Kasu Mahindra <kasu.mahindra@mphasis.com>
+				Date:   Wed Mar 13 13:26:42 2024 +0530
+				
+					added new file
  
+ 
+5bf33593f9c688c80ef3dd15d944a6bbdcfd3ee6
+0ed3dcd0dd7e4e9cb8d191951394f3982a218e0b
+089ac87dd30eda297f4342e5fb6ead546d21e498
+f6af2998190e6129ed430a1899fda3c4469dab4f
+38e991f28fdcd86654a014d3437efedddf862e43
+12c75ec856e779333334640d9353a0f8b79d88ff
+
+
+2. the above listed commits are common for same requirement.
+   if you want to combine all the commits and make it as one commit.
+
+3. use "git rebase -i <pick the from commit(12c75ec856e779333334640d9353a0f8b79d88ff)>"
+
+4. it will take to you to file
+		r 5bf33593f9c688c80ef3dd15d944a6bbdcfd3ee6
+		s 0ed3dcd0dd7e4e9cb8d191951394f3982a218e0b
+		s 089ac87dd30eda297f4342e5fb6ead546d21e498
+		s f6af2998190e6129ed430a1899fda3c4469dab4f
+		s 38e991f28fdcd86654a014d3437efedddf862e43
+		s 12c75ec856e779333334640d9353a0f8b79d88ff
+		
+note:- all 's' - squesh and 'r' - reword - combines all 's' with 'r'
+
+***********************************************************************************************************************
+1. when we get the merge conflict while we are doing "merge or rebase"
+2. After fixing the merge conflicts
+3. run the "git merge --continue"  or "git rebase --continue"  
+   
 
 ==================================== Important to check & understand ============================
  ************ function pointer array *************
